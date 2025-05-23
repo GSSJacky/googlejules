@@ -1,0 +1,20 @@
+[
+  {
+    "id": "sci_001",
+    "subject": "Physics",
+    "question_text": "Explain Newton's First Law of Motion. Provide a real-world example.",
+    "model_answer": "Newton's First Law, also known as the Law of Inertia, states that an object at rest will stay at rest, and an object in motion will stay in motion with the same speed and in the same direction unless acted upon by an unbalanced external force. For example, a soccer ball sitting on a field will not move until kicked (external force). Once kicked, it would theoretically keep moving forever if not for forces like friction and air resistance."
+  },
+  {
+    "id": "hist_001",
+    "subject": "History",
+    "question_text": "What were the primary motivations behind the European voyages of discovery in the 15th and 16th centuries?",
+    "model_answer": "The primary motivations included the search for new trade routes to Asia (especially for spices), the desire for wealth (gold, silver), the spread of Christianity (God, Gold, Glory), and national prestige. Technological advancements in shipbuilding and navigation also played a crucial role."
+  },
+  {
+    "id": "law_001",
+    "subject": "Law (Conceptual - for LLM reasoning)",
+    "question_text": "A person develops a new type of software that significantly improves data compression. They want to protect their invention. What are the primary types of intellectual property protection they should consider, and briefly describe why each might be relevant or not?",
+    "model_answer": "The person should primarily consider: 1. Copyright: This would protect the literal software code (the expression of the idea), preventing others from directly copying and distributing it. 2. Patent: If the data compression method itself is novel, non-obvious, and useful (i.e., an inventive algorithm or process), it might be patentable. This would protect the underlying method/idea, not just the code. 3. Trade Secret: If they choose not to disclose the algorithm publicly (as required by patents), they could treat parts of it as a trade secret, protecting it through confidentiality measures. Trademark would not be primary for the invention itself, but for branding the software product (name, logo)."
+  }
+]
