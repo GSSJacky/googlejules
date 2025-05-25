@@ -1,0 +1,7 @@
+herb_name,tcmsp_id,compound_name,pubchem_id,relation_note
+"薄荷 (Mentha)",H001,Menthol,1254,"found in essential oil, major component"
+"丁香 (Clove)",H002,Eugenol,3314,"major volatile compound, characteristic aroma"
+"薰衣草 (Lavender)",H003,Linalool,6549,"key relaxing component"
+"柠檬草 (Lemongrass)",H004,Citral,638014,"dominant scent molecule, fresh aroma"
+"香草 (Vanilla Bean)",H005,Vanillin,1183,"primary aromatic compound"
+"罗勒 (Basil)",H006,Linalool,6549,"contributes to sweet floral notes"

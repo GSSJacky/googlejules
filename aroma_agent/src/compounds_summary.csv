@@ -1,0 +1,6 @@
+compound_id,compound_name,pubchem_cid,molecular_formula,smiles,aroma_profile
+C001,Linalool,6549,C10H18O,CC(C)=CC[C@@H](C)CC(C)(C)O,"floral,citrus,spicy,calming"
+C002,Eugenol,3314,C10H12O2,C=CC1=CC=C(C=C1)OCC,"clove,sweet,woody,spicy"
+C003,Menthol,1254,C10H20O,CC(C)[C@H]1CC[C@H](C)C[C@@H]1O,"minty,fresh,cool,energizing"
+C004,Citral,638014,C10H16O,CC(C)=CCC=C(C)C=O,"citrus,lemon,fresh,uplifting"
+C005,Vanillin,1183,C8H8O3,O=CC1=CC(OC)=C(O)C=C1,"vanilla,sweet,balsamic,relaxing"
