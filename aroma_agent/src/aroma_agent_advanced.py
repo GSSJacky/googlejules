@@ -58,10 +58,10 @@ def search_candidates(aroma_tags):
     if not aroma_tags or not isinstance(aroma_tags, list) or not all(isinstance(tag, str) for tag in aroma_tags):
         print(f"Warning: Invalid aroma_tags: {aroma_tags}. Returning empty list.")
         return []
-    
+
     # Ensure 'flavor_profile' is string and handle NaN
     flavor_df['flavor_profile'] = flavor_df['flavor_profile'].fillna('')
-    
+
     matched_mols = flavor_df[flavor_df['flavor_profile'].apply(
         lambda x: any(tag.lower() in x.lower() for tag in aroma_tags))]
 
@@ -69,13 +69,13 @@ def search_candidates(aroma_tags):
     # If pubchem_id can be NaN, ensure it's handled, e.g. by dropping rows or converting types.
     # For this example, assume pubchem_id are compatible types (e.g. int or string consistently)
     # and that missing values that would break 'isin' are handled if necessary.
-    
+
     # Convert pubchem_id columns to a common type, e.g., string, to ensure 'isin' works robustly
     herb_df['pubchem_id'] = herb_df['pubchem_id'].astype(str)
     matched_mols['pubchem_id'] = matched_mols['pubchem_id'].astype(str)
 
     candidates = herb_df[herb_df['pubchem_id'].isin(matched_mols['pubchem_id'].unique())] # Added .unique() for efficiency
-    
+
     if candidates.empty:
         return []
 
@@ -119,20 +119,20 @@ def run_agent_advanced(user_input: str):
     preferred_aromas = context.get("preferred_aroma", [])
     if isinstance(preferred_aromas, str):
         preferred_aromas = [s.strip() for s in preferred_aromas.split(',') if s.strip()]
-    
+
     candidates = search_candidates(preferred_aromas) # Use the processed list
-    
+
     if not candidates:
         # If no candidates, directly call Gemini for a general recommendation or fallback
         print("❌ 未直接匹配到相关植物。尝试通用推荐。")
-        # Fallback: Call generate_recommendation with empty candidates. 
+        # Fallback: Call generate_recommendation with empty candidates.
         # Gemini will rely solely on context.
-        suggestion = generate_recommendation(context, []) 
+        suggestion = generate_recommendation(context, [])
     else:
         print(f"🌿 发现 {len(candidates)} 个潜在候选：{[(c['herb_name'], c['compound_name']) for c in candidates[:5]]}...") # Displaying first 5
         print("\n🤖 Gemini 正在生成推荐配方……")
         suggestion = generate_recommendation(context, candidates)
-    
+
     print("\n✅ 推荐输出：\n")
     print(suggestion)
 

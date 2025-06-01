@@ -16,7 +16,7 @@ class DataLoader:
         ]
         if scent_preferences:
             filtered_data = [
-                item for item in sample_data 
+                item for item in sample_data
                 if any(pref.lower() in profile for pref in scent_preferences for profile in item["scent_profile"])
             ]
             return filtered_data if filtered_data else sample_data
@@ -32,7 +32,7 @@ class DataLoader:
         ]
         if mood:
             filtered_data = [
-                item for item in sample_data 
+                item for item in sample_data
                 if mood.lower() in item["mood_association"]
             ]
             return filtered_data if filtered_data else sample_data
@@ -50,7 +50,7 @@ class DataLoader:
             return [r for r in sample_reviews if r["plant"] == plant_name.lower()]
         if scent_keywords:
             filtered_reviews = [
-                r for r in sample_reviews 
+                r for r in sample_reviews
                 if any(keyword.lower() in r_keywords for keyword in scent_keywords for r_keywords in r["keywords"])
             ]
             return filtered_reviews if filtered_reviews else sample_reviews

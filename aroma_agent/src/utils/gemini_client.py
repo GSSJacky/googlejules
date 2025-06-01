@@ -105,7 +105,7 @@ class MockGeminiClient:
 """
             print(f"Mock Client: Returning recommendation: {recommendation_text.strip()[:100]}...")
             return recommendation_text.strip()
-        
+
         else:
             print("Mock Client: Detected UNKNOWN Prompt type. Returning generic message.")
             return "Mock response for unknown prompt type. Please check prompt content if this was unexpected."
@@ -117,7 +117,7 @@ if __name__ == '__main__':
     intent_prompt_stress = '用户描述如下: "I feel stressed and anxious." 请分析其意图, 返回 JSON...'
     intent_response_stress = mock_client.generate_text(intent_prompt_stress)
     print(f"Mock response for intent (stressed):\n{intent_response_stress}")
-    
+
     print("\n--- Testing Mock Client: Intent Extraction (Happy) ---")
     intent_prompt_happy = '用户描述如下: "I am very happy today!" 请分析其意图, 返回 JSON...'
     intent_response_happy = mock_client.generate_text(intent_prompt_happy)

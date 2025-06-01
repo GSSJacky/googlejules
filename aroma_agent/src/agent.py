@@ -10,7 +10,7 @@ class AromaAgent:
 
     def get_aroma_suggestion(self, mood: str, preferences: str = "") -> dict:
         print(f"Received mood: {mood}, preferences: {preferences}")
-        
+
         # Placeholder for using data_loader
         # preferences_list = [p.strip() for p in preferences.split(',') if p.strip()]
         # flavor_info = self.data_loader.load_flavor_db_data(scent_preferences=preferences_list)
@@ -39,11 +39,11 @@ class AromaAgent:
         Common Combinations: {data_context['common_combinations']}
 
         Task:
-        Based on the user's mood and preferences, and the available data, suggest a combination of common household plants 
+        Based on the user's mood and preferences, and the available data, suggest a combination of common household plants
         to create a pleasant aroma. Provide simple instructions for preparing or combining them.
         The plants should be readily available (e.g., common herbs, garden plants).
         If no suitable plant combination can be found or if the user's request is very specific and hard to match with common plants,
-        suggest a type of commercial fragrance product (e.g., "a citrus-scented essential oil diffuser blend" or 
+        suggest a type of commercial fragrance product (e.g., "a citrus-scented essential oil diffuser blend" or
         "a calming lavender room spray"). Do not invent specific product names unless they are extremely generic examples.
 
         Format your response as follows:
@@ -61,7 +61,7 @@ class AromaAgent:
         """
 
         gemini_response_text = self.gemini_client.generate_text(prompt)
-        
+
         response_parts = {}
         current_key = None
         for line in gemini_response_text.strip().split('\n'):
@@ -69,7 +69,7 @@ class AromaAgent:
                 key, value = line.split(':', 1)
                 current_key = key.strip().lower()
                 response_parts[current_key] = value.strip()
-            elif current_key and line.strip(): 
+            elif current_key and line.strip():
                  response_parts[current_key] += " " + line.strip()
 
         parsed_suggestion = {
@@ -79,7 +79,7 @@ class AromaAgent:
             "instructions": response_parts.get("instructions", ""),
             "reasoning": response_parts.get("reasoning", "")
         }
-        
+
         if parsed_suggestion["type"] == "error" or not parsed_suggestion["suggestion"]:
             if not parsed_suggestion.get("message"):
                  parsed_suggestion["message"] = "Failed to parse suggestion or no specific suggestion found."
@@ -87,7 +87,7 @@ class AromaAgent:
         return parsed_suggestion
 
 if __name__ == '__main__':
-    agent = AromaAgent() 
+    agent = AromaAgent()
     print("\n--- Test Case 1: Relaxing Mood ---")
     suggestion1 = agent.get_aroma_suggestion(mood="relaxed", preferences="I like floral scents.")
     print(suggestion1)
